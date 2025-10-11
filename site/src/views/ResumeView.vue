@@ -1,75 +1,69 @@
 <template>
-  <div class="min-h-screen bg-neutral-900 text-gray-100 flex justify-center items-center p-10">
-    <div class="max-w-5xl w-full bg-neutral-800 rounded-2xl shadow-lg p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Left Side -->
-      <div class="flex flex-col items-center text-center space-y-4">
+  <!-- 페이지 배경 + 카드 래퍼 (샘플처럼 흰 바탕) -->
+  <div class="min-h-screen bg-gray-100 flex justify-center py-10 px-4">
+    <div class="w-full max-w-[820px] bg-white border border-gray-300 shadow-sm rounded-md p-10">
+
+      <!-- 상단 타이틀 + 얇은 선 -->
+      <header class="text-center mb-8">
+        <h1 class="text-3xl font-extrabold tracking-wider">RESUME</h1>
+        <div class="mt-3 h-px bg-neutral-400"></div>
+      </header>
+
+     <!-- 🔴 프로필 박스 교체본 -->
+    <section class="border border-neutral-300 p-6">
+    <div
+        class="w-full"
+        style="display:grid; grid-template-columns: 200px 1fr; gap:28px;"
+    >
+        <!-- 좌: 사진(샘플 감성: 살짝 작은 직사각형) -->
+        <div class="flex justify-center items-start">
         <img
-          src="@/assets/profile.jpg"
-          alt="Profile Photo"
-          class="w-40 h-40 rounded-full object-cover shadow-md border border-gray-600"
+            src="@/assets/profile.jpg"
+            alt="프로필"
+            class="w-[150px] h-[190px] object-cover rounded-sm border border-gray-200"
         />
-        <h1 class="text-2xl font-bold">KIM JANGSU</h1>
-        <p class="text-sm text-gray-400">Backend / Full-stack Engineer</p>
-        <div class="space-y-1">
-          <p>Email: <a href="mailto:jangsu7919@gmail.com" class="text-emerald-400 hover:underline">jangsu7919@gmail.com</a></p>
-          <p>Location: Osaka, Japan</p>
-          <p>
-            GitHub:
-            <a href="https://github.com/JangsuKim" target="_blank" class="text-emerald-400 hover:underline">
-              JangsuKim
-            </a>
-          </p>
         </div>
-      </div>
 
-      <!-- Right Side -->
-      <div class="md:col-span-2 space-y-6">
-        <!-- Tech Stack -->
-        <section>
-          <h2 class="text-xl font-semibold border-b border-gray-600 pb-1 mb-2">Tech Stack</h2>
-          <p>Java / Spring Boot / PHP / Laravel / Vue.js / MySQL</p>
-        </section>
+        <!-- 우: 이름 + 정보표 -->
+        <div>
+        <!-- 이름: 더 크고 굵게, 행간 타이트 -->
+        <h2 class="text-[34px] leading-[1.05] font-semibold mb-3">KIM JANGSU</h2>
 
-        <!-- Education -->
-        <section>
-          <h2 class="text-xl font-semibold border-b border-gray-600 pb-1 mb-2">学歴</h2>
-          <p>乙支大学 医療経営学科 (2007 - 2011)</p>
-        </section>
+        <!-- 표: 라벨 고정폭, 행간 조정 -->
+        <table class="w-full text-[15px] leading-[1.35]">
+            <tbody>
+            <tr class="align-top">
+                <td class="w-[72px] text-gray-500 pb-2">age</td>
+                <td class="pb-2">40歳 (1985-08-19)</td>
+            </tr>
+            <tr class="align-top">
+                <td class="w-[72px] text-gray-500 pb-2">e-mail</td>
+                <td class="pb-2">
+                <a href="mailto:jangsoo719@gmail.com" class="hover:underline">jangsoo719@gmail.com</a>
+                </td>
+            </tr>
+            <tr class="align-top">
+                <td class="text-gray-500 pb-2">mobile</td>
+                <td class="pb-2">080-3733-6561</td>
+            </tr>
+            <tr class="align-top">
+                <td class="text-gray-500 pb-2">address</td>
+                <td class="pb-2">大阪府大阪市東成区中本5-13-10</td>
+            </tr>
+            <tr class="align-top">
+                <td class="text-gray-500">Web</td>
+                <td>
+                <a href="https://github.com/JangsuKim" target="_blank" class="hover:underline">🧑‍💻 [GitHub]</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </section>
 
-        <!-- Work Experience -->
-        <section>
-          <h2 class="text-xl font-semibold border-b border-gray-600 pb-1 mb-2">職務経歴</h2>
-          <div class="space-y-2">
-            <div>
-              <p class="font-semibold">テストテクノロジー株式会社</p>
-              <p class="text-sm text-gray-400">GX導入（Laravel + Vue.js）業務管理・不具合対応 (2024年〜現在)</p>
-            </div>
-            <div>
-              <p class="font-semibold">某スポーツ系株式会社</p>
-              <p class="text-sm text-gray-400">Bot Prevention / Fingerprint / Lucky Draw (2022.8〜2024.7)</p>
-            </div>
-          </div>
-        </section>
 
-        <!-- Certifications -->
-        <section>
-          <h2 class="text-xl font-semibold border-b border-gray-600 pb-1 mb-2">資格</h2>
-          <ul class="list-disc list-inside">
-            <li>JLPT N2 (2009)</li>
-            <li>情報処理技術者試験 基本情報技術者 (2016)</li>
-          </ul>
-        </section>
-
-        <!-- Self Introduction -->
-        <section>
-          <h2 class="text-xl font-semibold border-b border-gray-600 pb-1 mb-2">自己紹介</h2>
-          <p>
-            現在はLaravelとVue.jsを使用した業務管理システムの開発に携わっています。  
-            日本での勤務経験を通じてチーム開発・コード品質・テスト文化の重要性を深く学びました。  
-            今後はよりアーキテクチャ設計やパフォーマンス改善に注力していきたいと考えています。
-          </p>
-        </section>
-      </div>
+      <!-- 아래 섹션들은 나중에 추가 -->
     </div>
   </div>
 </template>
