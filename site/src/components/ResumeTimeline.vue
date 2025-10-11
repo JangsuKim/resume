@@ -31,11 +31,13 @@ const items: Item[] = [
     <ul class="space-y-2">
       <li v-for="(it, i) in items" :key="i" class="relative flex items-start">
         <!-- 왼쪽(20%): 연도 -->
-        <div class="w-[20%] pr-3 text-center">
-          <span class="text-2xl font-bold leading-none tracking-tight text-slate-400">
+        <div class="w-[20%] pt-2 pr-3 text-center">
+          <span class="text-3xl font-bold leading-none tracking-tight text-slate-400">
             {{ it.year }}
           </span>
         </div>
+
+        <div class="absolute left-[18.4%] top-1/3 -translate-x-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full bg-slate-500 shadow-sm"></div>
 
         <!-- 오른쪽(80%): 내용 -->
         <div
