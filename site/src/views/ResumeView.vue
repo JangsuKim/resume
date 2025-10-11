@@ -10,7 +10,7 @@
       </header>
 
      <!-- 🔴 프로필 박스 교체본 -->
-    <section class="border border-neutral-300 p-6">
+    <section class="">
     <div
         class="w-full"
         style="display:grid; grid-template-columns: 200px 1fr; gap:28px;"
@@ -27,7 +27,7 @@
         <!-- 우: 이름 + 정보표 -->
         <div>
         <!-- 이름: 더 크고 굵게, 행간 타이트 -->
-        <h2 class="text-[34px] leading-[1.05] font-semibold mb-3">KIM JANGSU</h2>
+        <h2 class="text-[30px] leading-[1.05] font-semibold mb-3">KIM JANGSU</h2>
 
         <!-- 표: 라벨 고정폭, 행간 조정 -->
         <table class="w-full text-[15px] leading-[1.35]">
@@ -62,8 +62,41 @@
     </div>
     </section>
 
+    <!-- 인셋 콘텐츠 패널 -->
+    <section class="mt-4 pt-4">
+    <ResumeTimeline />
+    </section>
 
-      <!-- 아래 섹션들은 나중에 추가 -->
+    <!-- 資格・認定 -->
+    <section class="mt-8 border-t border-gray-200 pt-4 pl-8">
+        <div class="grid grid-cols-12">
+            <div class="col-span-2 flex items-start">
+                <h3 class="font-semibold text-lg">免許・資格</h3>
+            </div>
+            <div class="col-span-4">
+                <div class="space-y-2 text-[15px] leading-[1.5]">
+                    <div class="flex justify-between">
+                    <span>JLPT 2級</span>
+                    <span class="text-neutral-600">(2009年2月)</span>
+                    </div>
+                    <div class="flex justify-between">
+                    <span>情報処理産業棋士</span>
+                    <span class="text-neutral-600">(2016年11月)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-4 pl-8">
+            <div class="col-span-2 flex items-start">
+                <h3 class="font-semibold text-lg">職務経歴書へ</h3>
+            </div>
+    </section>
+
     </div>
   </div>
 </template>
+<script setup lang="ts">
+    import ResumeTimeline from '@/components/ResumeTimeline.vue'
+</script>
