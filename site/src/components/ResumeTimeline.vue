@@ -41,14 +41,14 @@ const items: Item[] = [
 
         <!-- 오른쪽(80%): 내용 -->
         <div
-          class="w-[75%] origin-left rounded-md bg-white px-3 py-2 transition
+          class="w-[70%] origin-left rounded-md bg-white px-3 py-2 transition
                  duration-200 ease-out hover:scale-110 hover:shadow-md hover:ring-1 hover:ring-slate-200"
         >
-          <h3 class="text-sm md:text-base font-semibold text-slate-900">{{ it.title }}</h3>
-          <p v-if="it.subtitle" class="text-[13px] text-slate-600">
+          <h3 class="text-[20px] font-semibold text-slate-900">{{ it.title }}</h3>
+          <p v-if="it.subtitle" class="text-[15px] text-slate-600">
             {{ it.subtitle }}
           </p>
-          <p v-if="it.desc" class="mt-0.5 text-[13px] leading-snug text-slate-600">
+          <p v-if="it.desc" class="mt-0.5 text-[15px] leading-snug text-slate-600">
             {{ it.desc }}
           </p>
         </div>

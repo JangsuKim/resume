@@ -10,6 +10,12 @@ const router = createRouter({
       component: ResumeView,
     },
     {
+      path: '/career',
+      name: 'Career',
+      component: () => import('@/views/Career.vue'),
+      meta: { title: '職務経歴書' }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
