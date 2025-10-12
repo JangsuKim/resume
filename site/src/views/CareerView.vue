@@ -87,7 +87,8 @@
             <!-- トグル -->
             <button
               type="button"
-              class="mt-3 text-xs inline-flex items-center gap-1 px-2 py-1 border rounded hover:bg-gray-50 active:scale-[0.99]"
+              class="mt-3 text-xs inline-flex items-center gap-1 px-2 py-1 rounded border 
+                    text-gray-600 border-gray-300 bg-gray-100 hover:bg-gray-200 active:scale-[0.99]"
               @click="showFullIntro = !showFullIntro"
             >
               <span v-if="!showFullIntro">詳細を表示</span>
@@ -107,14 +108,13 @@
         </section>
 
 
-        <!-- 프로젝트(아코디언 자리만) -->
+        <!-- プロジェクト -->
         <section id="projects" class="mt-10">
           <h2 class="text-lg font-semibold tracking-wide">プロジェクト</h2>
-          <p class="mt-2 text-sm text-gray-600">
-            ※ 次のステップでアコーディオンとデータを実装します。
-          </p>
-          <div class="mt-4 h-32 border border-dashed border-gray-300 rounded-md grid place-items-center text-xs text-gray-500">
-            Accordion will be here.
+          <p class="mt-2 text-sm text-gray-600">※ 会社 → プロジェクトの2段アコーディオンです。</p>
+
+          <div class="mt-4">
+            <CompanyAccordion :companies="careerCompanies" :print-mode="printMode" />
           </div>
         </section>
 
@@ -132,6 +132,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import CompanyAccordion from '@/components/career/CompanyAccordion.vue'
+import { careerCompanies } from '@/data/career'
 
 const BASE_WIDTH = 820
 const OUTER_PADDING = 32
@@ -142,6 +144,9 @@ const mode = ref<Mode>('fit')
 const fitScale = ref(1)
 const scale = ref(1)
 const showFullIntro = ref(false)
+
+// 🔹 인쇄 모드 플래그 (before/after print에서 제어)
+const printMode = ref(false)
 
 // 내부 줌 범위
 const MIN_SCALE = 0.5
@@ -213,16 +218,50 @@ function onTouchEnd(e: TouchEvent) {
 }
 /* ------------------ */
 
+// 🔹 인쇄 훅: beforeprint에 모두 펼치기
+function handleBeforePrint() {
+  printMode.value = true        // 회사·프로젝트 아코디언 전부 펼침
+  showFullIntro.value = true    // 자기소개 상세 펼침
+}
+function handleAfterPrint() {
+  printMode.value = false
+}
+
 onMounted(() => {
   computeFit()
   window.addEventListener('resize', computeFit, { passive: true })
+
+  // 🔹 경력 페이지 진입 시 최상단으로
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+  // 🔹 프린트 훅 등록
+  window.addEventListener('beforeprint', handleBeforePrint)
+  window.addEventListener('afterprint', handleAfterPrint)
 })
 onBeforeUnmount(() => {
   window.removeEventListener('resize', computeFit)
+  window.removeEventListener('beforeprint', handleBeforePrint)
+  window.removeEventListener('afterprint', handleAfterPrint)
 })
 </script>
 
 <style scoped>
 .fade-enter-active, .fade-leave-active { transition: opacity .15s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
+
+/* 🔹 인쇄 최적화 */
+@media print {
+  /* 모든 그림자 제거 */
+  .shadow-sm, .shadow,
+  :deep(.shadow-sm), :deep(.shadow) {
+    box-shadow: none !important;
+  }
+
+  /* 점선 테두리 → 실선으로 변경 */
+  .border-dashed,
+  :deep(.border-dashed) {
+    border-style: solid !important;
+  }
+
+}
 </style>
