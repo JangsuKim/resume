@@ -9,7 +9,7 @@
     >
       <!-- A4 카드: 고정 폭, 시각만 scale -->
       <div
-        class="relative bg-white border border-gray-300 shadow-sm rounded-md p-10"
+        class="relative bg-white border border-gray-300 shadow-sm rounded-md p-10 print-scale"
         style="width: 820px;"
         :style="{
           transform: `scale(${effectiveScale})`,
@@ -169,3 +169,18 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', computeFit)
 })
 </script>
+
+<style>
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* A4에 맞춰 자동 축소 */
+    .print-scale {
+      transform: scale(0.72);
+      transform-origin: top center;
+    }
+  }
+</style>

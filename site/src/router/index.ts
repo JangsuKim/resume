@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/career',
       name: 'CareerPage',
-      component: () => import('@/views/Career.vue'),
+      component: () => import('@/views/CareerView.vue'),
     },
     {
       path: '/about',

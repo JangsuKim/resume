@@ -4,7 +4,10 @@
     <div
       class="mx-auto select-none"
       :style="{ width: (BASE_WIDTH * effectiveScale) + 'px' }"
+      style="touch-action: pan-y; -ms-touch-action: pan-y;"
       @dblclick.prevent="toggleMode"
+      @touchstart="onTouchStart"
+      @touchmove.prevent="onTouchMove"
       @touchend.passive="onTouchEnd"
     >
       <!-- A4 카드(고정 820px) - ‘그룹’으로 scale 적용 -->
@@ -44,14 +47,19 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
-const BASE_WIDTH = 820     // 카드 설계 폭(px)
-const OUTER_PADDING = 32   // 페이지 좌우 padding (px-4 = 16*2)
+const BASE_WIDTH = 820
+const OUTER_PADDING = 32
 
 type Mode = 'fit' | 'actual'
 const mode = ref<Mode>('fit')
 
-const fitScale = ref(1)    // 화면폭에 맞춘 자동 스케일
-const scale = ref(1)       // actual 모드에서 수동 스케일(필요 시 +/− 확장 가능)
+const fitScale = ref(1)
+const scale = ref(1)
+
+// 🔹 내부 줌 한계(원하시면 숫자만 조정)
+const MIN_SCALE = 0.5
+const MAX_SCALE = 1.4
+
 const effectiveScale = computed(() => (mode.value === 'fit' ? fitScale.value : scale.value))
 
 function computeFit() {
@@ -63,23 +71,69 @@ function computeFit() {
 function toggleMode() {
   if (mode.value === 'fit') {
     mode.value = 'actual'
-    // fit 상태 값을 시작점으로 사용 (0.5~1 범위로 클램프)
-    scale.value = Math.min(1, Math.max(0.5, fitScale.value))
+    scale.value = clamp(fitScale.value, MIN_SCALE, 1)
   } else {
     mode.value = 'fit'
   }
 }
 
-// 모바일 더블탭 감지
+const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v))
+
+/* ----------------- 🔹 내부 ‘핀치줌’ 구현 ----------------- */
+let pinchStartDist = 0
+let pinchStartScale = 1
+const getDist = (t0: Touch, t1: Touch) => {
+  const dx = t0.clientX - t1.clientX
+  const dy = t0.clientY - t1.clientY
+  return Math.hypot(dx, dy)
+}
+
+function onTouchStart(e: TouchEvent) {
+  if (e.touches.length === 2) {
+    // 기본 브라우저 핀치줌 대신 내부 줌 사용
+    e.preventDefault()
+    if (e.touches[0] && e.touches[1]) {
+      pinchStartDist = getDist(e.touches[0], e.touches[1])
+    }
+    // 핀치 시작 시 'actual' 모드로 전환해 제어권 확보
+    if (mode.value === 'fit') {
+      mode.value = 'actual'
+      scale.value = clamp(fitScale.value, MIN_SCALE, 1)
+    }
+    pinchStartScale = scale.value
+  }
+}
+
+function onTouchMove(e: TouchEvent) {
+  if (e.touches.length === 2 && pinchStartDist > 0) {
+    e.preventDefault()
+    if (e.touches[0] && e.touches[1]) {
+      const dist = getDist(e.touches[0], e.touches[1])
+      const factor = dist / pinchStartDist
+      // 부드럽게: 약간의 감쇠(민감도 ↓)
+      const target = pinchStartScale * Math.pow(factor, 0.85)
+      scale.value = clamp(+target.toFixed(3), MIN_SCALE, MAX_SCALE)
+    }
+  }
+}
+
+// 기존 더블탭 토글 유지
 let lastTouch = 0
 function onTouchEnd(e: TouchEvent) {
+  if (e.touches.length < 2) {
+    pinchStartDist = 0
+  }
   const now = Date.now()
   if (now - lastTouch < 300) {
-    toggleMode()
-    e.preventDefault()
+    // 두 손가락 제스처 직후엔 더블탭 토글 방지
+    if (e.changedTouches && e.changedTouches.length === 1) {
+      toggleMode()
+      e.preventDefault()
+    }
   }
   lastTouch = now
 }
+/* ------------------------------------------------------- */
 
 onMounted(() => {
   computeFit()
