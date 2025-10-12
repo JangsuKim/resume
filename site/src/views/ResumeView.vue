@@ -78,12 +78,12 @@
         </section>
 
         <!-- 타임라인 -->
-        <section class="mt-4 pt-4">
+        <section class="mt-4 pt-2">
           <ResumeTimeline />
         </section>
 
         <!-- 資格・認定 : 고정 2컬럼 그리드 -->
-        <section class="mt-8 border-t border-gray-200 pt-4 pl-8">
+        <section class="mt-8 border-t border-gray-200 pt-3 pl-8">
           <div style="display:grid; grid-template-columns: 110px 1fr; column-gap:18px;">
             <div class="flex items-start">
               <h3 class="font-semibold text-lg">免許・資格</h3>
@@ -104,14 +104,14 @@
         </section>
 
         <!-- 링크 -->
-        <section class="mt-8 border-t border-gray-200 pt-4 pl-8 relative z-10">
+        <section class="mt-8 border-t border-gray-200 pt-3 pl-7 relative z-10">
           <div class="flex items-start gap-6">
-            <h3 class="font-semibold text-lg">職務経歴書へ</h3>
+            <h3 class="font-semibold text-lg">職務経歴書</h3>
             <RouterLink
               :to="{ name: 'CareerPage' }"
-              class="inline-flex items-center gap-2 text-blue-600 hover:text-gray-900 transition-colors"
+              class="inline-flex items-center gap-2 text-blue-600 hover:text-gray-900 transition-colors pl-6"
             >
-              職務経歴書へ <span aria-hidden="true">→</span>
+              職務経歴書へ移動 <span aria-hidden="true">→</span>
             </RouterLink>
           </div>
         </section>
