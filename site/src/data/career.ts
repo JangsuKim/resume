@@ -42,14 +42,13 @@ export const careerCompanies: CareerCompany[] = [
         phases: ['要件定義', '設計', '開発', 'テスト', '運用', 'アーキテクチャ改善'],
         responsibilities: [
           'Laravelを用いたバックエンド開発・保守',
-          'AWS/Dockerを活用したインフラ運用',
+          'AWS/Dockerを活用した開発',
           'PdM連携による要件整理と技術提案',
           'チーム協業による品質向上・コードレビュー'
         ],
         achievements: [
           '新機能設計〜実装を主導',
-          'DB最適化による性能向上',
-          'CI/CDパイプライン整備で開発効率化'
+          'DB最適化による性能向上'
         ],
         tech: {
           os: ['Linux', 'macOS'],
