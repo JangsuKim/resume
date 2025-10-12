@@ -122,7 +122,7 @@
         <section id="skills" class="mt-10">
           <h2 class="text-lg font-semibold tracking-wide">テクニカルスキル</h2>
           <p class="mt-2 text-sm text-gray-600">
-            ※ プロジェクト実装後に一覧テーブルを追加します。
+            ※ UPDATE予定：現在、詳細なスキルマトリクスを準備中です。
           </p>
         </section>
       </div>
