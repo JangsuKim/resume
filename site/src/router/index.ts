@@ -11,9 +11,8 @@ const router = createRouter({
     },
     {
       path: '/career',
-      name: 'Career',
+      name: 'CareerPage',
       component: () => import('@/views/Career.vue'),
-      meta: { title: '職務経歴書' }
     },
     {
       path: '/about',
