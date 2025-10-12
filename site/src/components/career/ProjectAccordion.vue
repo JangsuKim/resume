@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import type { Project } from '@/data/career'
     
 
@@ -9,6 +9,14 @@ defineProps<{
 }>()
 
 const active = ref<number | null>(0) // 첫 항목을 기본 오픈
+
+async function scrollToActive(idx: number) {
+  await nextTick()
+  const el = document.getElementById(`proj-panel-${idx}`)
+  if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+}
 
 // height 트랜지션 유틸
 function onEnter(el: Element) {
@@ -52,7 +60,7 @@ function onAfterLeave(el: Element) {
         class="w-full flex items-start justify-between gap-3 px-4 py-3 text-left hover:bg-gray-50 rounded-md"
         :aria-expanded="printMode || active === idx"
         :aria-controls="`proj-panel-${idx}`"
-        @click="active = active === idx ? null : idx"
+        @click="() => { active = active === idx ? null : idx; if (active === idx) scrollToActive(idx) }"
       >
         <div>
           <div class="text-sm font-semibold">
