@@ -5,7 +5,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
   // ✅ GitHub Pages용 base 경로
-  base: '/JangsuKim/',
+  base: '/resume/',
 
   plugins: [
     vue(),
