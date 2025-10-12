@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import type { CareerCompany } from '@/data/career'
 import ProjectAccordion from './ProjectAccordion.vue'
 
@@ -9,6 +9,15 @@ defineProps<{
 }>()
 
 const active = ref<number | null>(0) // 첫 회사 기본 오픈
+
+// 🔹 아코디언 클릭 후 해당 요소로 스크롤
+async function scrollToActive(idx: number) {
+  await nextTick()
+  const el = document.getElementById(`comp-panel-${idx}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+}
 
 function onEnter(el: Element) {
   const e = el as HTMLElement
@@ -47,7 +56,7 @@ function onAfterLeave(el: Element) {
         class="w-full flex items-start justify-between gap-3 px-5 py-4 text-left bg-gray-50 hover:bg-gray-100 rounded-md"
         :aria-expanded="printMode || active === idx"
         :aria-controls="`comp-panel-${idx}`"
-        @click="active = active === idx ? null : idx"
+        @click="() => { active = active === idx ? null : idx; if (active === idx) scrollToActive(idx) }"
       >
         <div class="min-w-0">
           <div class="text-base font-semibold">
