@@ -33,7 +33,7 @@
 
         <!-- 메타(최종 업데이트, 링크 앵커) -->
         <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
-          <span>最終更新：2025-10-13</span>
+          <span>最終更新：2025-10-14</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
             <a href="#projects" class="hover:underline">プロジェクト</a>
@@ -121,9 +121,9 @@
         <!-- 스킬(자리만) -->
         <section id="skills" class="mt-10">
           <h2 class="text-lg font-semibold tracking-wide">テクニカルスキル</h2>
-          <p class="mt-2 text-sm text-gray-600">
-            ※ UPDATE予定：現在、詳細なスキルマトリクスを準備中です。
-          </p>
+          <div class="mt-3 pl-2">
+            <TechStackCompact :groups="techGroups" />
+          </div>
         </section>
       </div>
     </div>
@@ -133,7 +133,57 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import CompanyAccordion from '@/components/career/CompanyAccordion.vue'
+import TechStackCompact from '@/components/TechStackCompact.vue'
 import { careerCompanies } from '@/data/career'
+
+// 🛠 CareerView.vue (상단 <script setup> 내부)
+type Size = 'xl' | 'lg' | 'md' | 'sm'
+type TechItem = { name: string; icon: string; size?: Size; note?: string }
+type TechGroup = { title: string; items: TechItem[]; defaultSize?: Size }
+
+// ✅ techGroups 정의를 아래처럼 수정 (point: satisfies)
+const techGroups = [
+  {
+    title: 'Backend',
+    items: [
+      { name: 'Java',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', size: 'xl' },
+      { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg', size: 'xl' },
+      { name: 'PHP',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', size: 'md' },
+      { name: 'Laravel',icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg', size: 'md' },
+    ],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', size: 'lg' },
+      { name: 'jQuery',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-original.svg',         size: 'lg' },
+      { name: 'Vue 3',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',           size: 'md' },
+      { name: 'HTML5',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',           size: 'md' },
+      { name: 'CSS3',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',             size: 'md' },
+    ],
+  },
+  {
+    title: 'Database',
+    items: [
+      { name: 'MySQL',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',           size: 'lg' },
+      { name: 'Oracle',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg',         size: 'lg' },
+      { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', size: 'md' },
+      { name: 'Redis',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',           size: 'md' },
+    ],
+  },
+  {
+    title: 'Tools / Cloud',
+    defaultSize: 'sm',
+    items: [
+      { name: 'Git',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+      { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+      { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+      { name: 'Linux',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+      { name: 'AWS', icon: 'https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png' },
+    ],
+  },
+] satisfies TechGroup[]
+
 
 const BASE_WIDTH = 820
 const OUTER_PADDING = 32

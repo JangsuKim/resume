@@ -95,6 +95,10 @@
                   <span class="text-neutral-600 text-left">(2009年2月)</span>
                 </div>
                 <div style="display:grid; grid-template-columns: 1fr 450px;">
+                  <span>TOEIC 750点</span>
+                  <span class="text-neutral-600 text-left">(2023年2月)</span>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 450px;">
                   <span>情報処理産業棋士</span>
                   <span class="text-neutral-600 text-left">(2016年11月)</span>
                 </div>
