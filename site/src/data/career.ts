@@ -54,7 +54,7 @@ export const careerCompanies: CareerCompany[] = [
           os: ['Linux', 'macOS'],
           languages: ['PHP', 'Laravel', 'Vue', 'TypeScript'],
           db: ['MySQL'],
-          team: '40名'
+          team: '30名'
         }
       }
     ]
@@ -63,14 +63,15 @@ export const careerCompanies: CareerCompany[] = [
     company: '楽天グループ株式会社',
     period: '2022.08〜2024.07',
     roleType: '自社開発',
-    business: 'オンライン書店（楽天ブックス）などの販売・予約サービス',
+    business: 'ECサイト開発・運用',
     projects: [
       {
         name: '楽天ブックス チェックアウト開発・運用',
         period: '2022.08〜2024.07',
         overview: [
-          '新機能開発／バグ対応／サーバ運用・管理／プロジェクト管理',
+          '新機能開発／バグ対応／プロジェクト管理／server運用',
           'Bot Prevention（不正注文・買い占め防止）を推進し楽天アワード受賞',
+          '一人n個購入制限、ラッキードロー等の機能開発',
           'Webサーバのマイグレーションを担当（LB/APP設定）'
         ],
         phases: ['要件定義', '設計', '開発', 'テスト', '運用', 'PJM（一部）'],
@@ -108,8 +109,7 @@ export const careerCompanies: CareerCompany[] = [
         responsibilities: ['旧システムに基づく設計書作成', '業務フロー担当'],
         tech: {
           os: ['Windows'],
-          languages: ['Java'],
-          db: ['Oracle']
+          languages: ['Java']
         }
       },
       {
@@ -195,7 +195,7 @@ export const careerCompanies: CareerCompany[] = [
         name: '電力需要管理システム（電力会社）',
         period: '2017.10〜2018.03',
         overview: [
-          '開発後期に参画し、リリース前の仕様変更・統合テストでのバグ修正を担当'
+          '電力需要管理システムの開発後期に参画し、リリース前の仕様変更・統合テストでのバグ修正を担当'
         ],
         phases: ['仕様変更対応', 'バグ修正', '統合テスト'],
         responsibilities: [
