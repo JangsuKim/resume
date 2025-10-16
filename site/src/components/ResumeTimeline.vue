@@ -11,7 +11,7 @@ const items: Item[] = [
   { year: '2011', title: '富士フィルム韓国支社 入社', subtitle: '2011.06 ~ 2015.02', desc: '電子材料事業部、総務部員' },
   { year: '2016', title: 'Javaプログラマー課程', subtitle: '2016.07 ~ 2017.02', desc: 'IT勉強スタート、韓国産業人力公団 主管' },
   { year: '2017', title: 'KS情報システム 入社', subtitle: '2017.04 ~ 2018.03', desc: '2017来日、SIer' },
-  { year: '2018', title: 'テクノプロIT社 入社', subtitle: '2018.04 ~ 2022.08', desc: 'SIer' },
+  { year: '2018', title: 'テクノプロ テクノプロIT社 入社', subtitle: '2018.04 ~ 2022.08', desc: 'SIer' },
   { year: '2022', title: '楽天グループ 入社', subtitle: '2022.08 ~ 2024.07', desc: '自社開発、楽天ブックス' },
   { year: '2024', title: 'ブーストテクノロジー 入社', subtitle: '2024.07 ~ 現在', desc: '大阪へ移住、自社開発' },
 ]
