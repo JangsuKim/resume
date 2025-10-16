@@ -97,7 +97,7 @@ export const careerCompanies: CareerCompany[] = [
   },
   {
     company: 'テクノプロ・ホールディングス株式会社',
-    period: '2018.04〜2022.07',
+    period: '2018.04〜2022.08',
     roleType: 'SIer',
     business: 'ソフトウェア開発／システム開発／DB構築 等',
     projects: [
