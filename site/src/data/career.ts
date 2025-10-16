@@ -88,7 +88,7 @@ export const careerCompanies: CareerCompany[] = [
         ],
         tech: {
           os: ['Linux', 'macOS'],
-          languages: ['Java', 'Spring', 'JS', 'jQuery', 'HTML'],
+          languages: ['Java', 'SpringBoot', 'JS', 'jQuery', 'HTML'],
           db: ['Redis'],
           team: '80名'
         }
