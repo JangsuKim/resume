@@ -8,7 +8,7 @@ export const techGroups = [
     title: 'Backend',
     items: [
       { name: 'Java',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', size: 'xl', note: '5年以上' },
-      { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg', size: 'xl', note: '5年以上' },
+      { name: 'SpringBoot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg', size: 'xl', note: '5年以上' },
       { name: 'PHP',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', size: 'md', note: '1年以上' },
       { name: 'Laravel',icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg', size: 'md', note: '1年以上' },
     ],
