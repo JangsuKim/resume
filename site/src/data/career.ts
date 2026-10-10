@@ -19,21 +19,28 @@ export type CareerCompany = {
   company: string
   period: string
   division?: string
-  roleType: '自社開発' | 'SIer'
+  roleType: '自社開発' | 'SIer' | '業務委託'
   business?: string
   projects: Project[]
 }
 
 export const careerCompanies: CareerCompany[] = [
   {
+    company: 'アソビュー株式会社', period: '2025.12〜現在', roleType: '業務委託', business: 'レジャー・遊びの予約サービス', projects: [
+      { name: 'Java／Gradleモダナイゼーション', period: '2026.01〜2026.04', overview: ['Java 8からJava 25へのアップグレードとビルド環境の更新', 'coupon、point、schedulerの主要パッケージを対象に対応'], phases: ['設計', '開発', 'テスト'], responsibilities: ['Version Catalogによる依存関係管理の標準化', '実装、リグレッションテスト、購買導線の統合テスト'], achievements: ['大きなバージョン差分を伴う改修を一貫して実施し、保守性を向上'], tech: { languages: ['Java', 'Gradle'], others: ['Version Catalog'] } },
+      { name: '顧客向けAsoviewサービスの開発・保守', period: '2026.05〜現在（セキュリティ支援期間を除く）', overview: ['一般顧客向けアプリケーションの保守開発・機能改善'], phases: ['設計', '開発', 'テスト', '運用'], responsibilities: ['SEO向けロケーションページの自動化', 'Google Action Center向けデータの最適化'] },
+      { name: 'パートナー向け予約・商品管理サービスのセキュリティ強化', period: '2026.06〜2026.09（断続的）', overview: ['セキュリティインシデント対応と継続的な脆弱性改善'], phases: ['調査', '設計', '開発', 'テスト', '運用'], responsibilities: ['長期未ログインアカウントの休眠化', '内部APIへのアクセス制御強化', '機密情報管理の改善とXSS対策'], achievements: ['再発防止と継続的なリスク低減を意識した改善を推進'] }
+    ]
+  },
+  {
     company: 'ブーストテクノロジーズ株式会社',
-    period: '2024.07〜現在',
+    period: '2024.07〜2025.12',
     roleType: '自社開発',
     business: 'サステナビリティERP「booost Sustainability Cloud」',
     projects: [
       {
         name: 'GXのERPプログラム開発',
-        period: '2024.07〜現在',
+        period: '2024.07〜2025.12',
         overview: [
           'サステナビリティ経営を支援するプラットフォームの開発・運用',
           '脱炭素経営を推進するWebアプリの設計・実装',

@@ -33,7 +33,7 @@
 
         <!-- 메타(최종 업데이트, 링크 앵커) -->
         <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
-          <span>最終更新：2025-10-14</span>
+          <span>最終更新：2026-10-10</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
             <a href="#projects" class="hover:underline">プロジェクト</a>
@@ -48,9 +48,9 @@
             <!-- 要約 -->
             <p>
               大阪在住のバックエンドエンジニアのキム・ジャンスです。
-              2017年に来日してから約8年間、Webアプリケーション開発に携わってきました。
-              Java と PHP（Laravel）を中心に、要件定義から設計、実装、テスト、運用まで一貫して対応します。
-              SIerでの5年に加え、直近は自社開発での3年を通じて、堅牢でメンテナンス性の高いシステムづくりと
+              2017年に来日してから約9年間、Webアプリケーション開発に携わってきました。
+              Java（Spring Boot）を主軸に、要件定義から設計、実装、テスト、運用まで一貫して対応します。
+              SIerでの5年に加え、自社開発および業務委託での経験を通じて、堅牢でメンテナンス性の高いシステムづくりと
               チーム開発の推進に注力しています。
             </p>
 
@@ -64,13 +64,14 @@
                 </p>
 
                 <ul class="list-disc pl-5 space-y-1">
-                  <li><span class="font-medium">技術スタック</span>：Java、PHP、TypeScript、Spring Boot、Laravel、Vue、MySQL、Redis、AWS、Docker、Linux</li>
+                  <li><span class="font-medium">主軸技術</span>：Java、Spring Boot、Gradle、SQL、Redis</li>
+                  <li><span class="font-medium">実務経験</span>：PHP、Laravel、TypeScript、Vue、MySQL、AWS、Docker、Linux</li>
                   <li><span class="font-medium">強み</span>：要件の抽象化から実装・検証までを着実に推進し、品質とスピードのバランスを取ること</li>
                   <li><span class="font-medium">価値観</span>：ユーザー体験と開発生産性の両立、チームで再現可能な仕組み化</li>
                 </ul>
 
                 <p>
-                  直近はサステナビリティ領域の商用サービスでコア機能の設計・実装を担当。
+                  直近はレジャー予約サービスにおけるJavaアプリケーションのモダナイゼーション、保守開発、セキュリティ改善を担当。
                   以前は大規模 EC でチェックアウト領域の新機能開発や不正対策を経験し、
                   高トラフィック環境での性能・安定性向上に取り組みました。
                 </p>
