@@ -33,9 +33,10 @@
 
         <!-- 메타(최종 업데이트, 링크 앵커) -->
         <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
-          <span>最終更新：2025-10-14</span>
+          <span>最終更新：2026-10-10</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
+            <a href="#personal-projects" class="hover:underline">個人プロジェクト</a>
             <a href="#projects" class="hover:underline">プロジェクト</a>
             <a href="#skills" class="hover:underline">スキル</a>
           </nav>
@@ -48,9 +49,9 @@
             <!-- 要約 -->
             <p>
               大阪在住のバックエンドエンジニアのキム・ジャンスです。
-              2017年に来日してから約8年間、Webアプリケーション開発に携わってきました。
-              Java と PHP（Laravel）を中心に、要件定義から設計、実装、テスト、運用まで一貫して対応します。
-              SIerでの5年に加え、直近は自社開発での3年を通じて、堅牢でメンテナンス性の高いシステムづくりと
+              2017年に来日してから約9年間、Webアプリケーション開発に携わってきました。
+              Java（Spring Boot）を主軸に、要件定義から設計、実装、テスト、運用まで一貫して対応します。
+              SIerでの5年に加え、自社開発および業務委託での経験を通じて、堅牢でメンテナンス性の高いシステムづくりと
               チーム開発の推進に注力しています。
             </p>
 
@@ -64,15 +65,22 @@
                 </p>
 
                 <ul class="list-disc pl-5 space-y-1">
-                  <li><span class="font-medium">技術スタック</span>：Java、PHP、TypeScript、Spring Boot、Laravel、Vue、MySQL、Redis、AWS、Docker、Linux</li>
+                  <li><span class="font-medium">主軸技術</span>：Java、Spring Boot、Gradle、SQL、Redis</li>
+                  <li><span class="font-medium">実務経験</span>：PHP、Laravel、TypeScript、Vue、MySQL、AWS、Docker、Linux</li>
                   <li><span class="font-medium">強み</span>：要件の抽象化から実装・検証までを着実に推進し、品質とスピードのバランスを取ること</li>
                   <li><span class="font-medium">価値観</span>：ユーザー体験と開発生産性の両立、チームで再現可能な仕組み化</li>
                 </ul>
 
                 <p>
-                  直近はサステナビリティ領域の商用サービスでコア機能の設計・実装を担当。
+                  直近はレジャー予約サービスにおけるJavaアプリケーションのモダナイゼーション、保守開発、セキュリティ改善を担当。
                   以前は大規模 EC でチェックアウト領域の新機能開発や不正対策を経験し、
                   高トラフィック環境での性能・安定性向上に取り組みました。
+                </p>
+
+                <p>
+                  2026年からは業務でClaude Code、個人開発でChatGPT PlusのCodexを活用しています。
+                  要件整理、実装のたたき台作成、テスト観点の洗い出し、レビューにAIを取り入れ、
+                  未経験の技術領域でも調査・検証を重ねながら、WebサイトやiOSアプリケーションの開発を進めています。
                 </p>
 
                 <div class="pt-1 text-xs text-gray-600">
@@ -107,7 +115,6 @@
           </div>
         </section>
 
-
         <!-- プロジェクト -->
         <section id="projects" class="mt-10">
           <h2 class="text-lg font-semibold tracking-wide">プロジェクト</h2>
@@ -115,6 +122,27 @@
 
           <div class="mt-4">
             <CompanyAccordion :companies="careerCompanies" :print-mode="printMode" />
+          </div>
+        </section>
+
+        <!-- 個人プロジェクト -->
+        <section id="personal-projects" class="mt-10">
+          <h2 class="text-lg font-semibold tracking-wide">個人プロジェクト</h2>
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <article class="rounded-md border border-gray-300 p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold">Seoulian Dental Webサイト</h3>
+                <a href="https://seouliandental.seoulian-dental.workers.dev/" target="_blank" rel="noopener" class="shrink-0 text-xs text-blue-600 hover:underline">サイトを見る ↗</a>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray-700">開業した歯科医院向けに、要望整理からデザイン・実装・公開までを一貫して担当したカスタムWebサイトです。ユーザーに伝わりやすい情報設計と、運用しやすい構成を意識して制作しました。</p>
+            </article>
+            <article class="rounded-md border border-gray-300 p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold">PairPocket</h3>
+                <a href="https://github.com/JangsuKim/PairPocket" target="_blank" rel="noopener" class="shrink-0 text-xs text-blue-600 hover:underline">GitHub ↗</a>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray-700">同居・結婚生活における家計管理を目的に開発中のiOSアプリケーションです。実際の生活課題を起点に、要件定義から設計・実装を進めています。</p>
+            </article>
           </div>
         </section>
 
