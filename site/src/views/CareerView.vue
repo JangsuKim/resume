@@ -36,6 +36,7 @@
           <span>最終更新：2026-10-10</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
+            <a href="#personal-projects" class="hover:underline">個人プロジェクト</a>
             <a href="#projects" class="hover:underline">プロジェクト</a>
             <a href="#skills" class="hover:underline">スキル</a>
           </nav>
@@ -76,6 +77,12 @@
                   高トラフィック環境での性能・安定性向上に取り組みました。
                 </p>
 
+                <p>
+                  2026年からは業務でClaude Code、個人開発でChatGPT PlusのCodexを活用しています。
+                  要件整理、実装のたたき台作成、テスト観点の洗い出し、レビューにAIを取り入れ、
+                  未経験の技術領域でも調査・検証を重ねながら、WebサイトやiOSアプリケーションの開発を進めています。
+                </p>
+
                 <div class="pt-1 text-xs text-gray-600">
                   🔗 GitHub：
                   <a href="https://github.com/JangsuKim" target="_blank" rel="noopener" class="underline">
@@ -108,7 +115,6 @@
           </div>
         </section>
 
-
         <!-- プロジェクト -->
         <section id="projects" class="mt-10">
           <h2 class="text-lg font-semibold tracking-wide">プロジェクト</h2>
@@ -116,6 +122,27 @@
 
           <div class="mt-4">
             <CompanyAccordion :companies="careerCompanies" :print-mode="printMode" />
+          </div>
+        </section>
+
+        <!-- 個人プロジェクト -->
+        <section id="personal-projects" class="mt-10">
+          <h2 class="text-lg font-semibold tracking-wide">個人プロジェクト</h2>
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <article class="rounded-md border border-gray-300 p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold">Seoulian Dental Webサイト</h3>
+                <a href="https://seouliandental.seoulian-dental.workers.dev/" target="_blank" rel="noopener" class="shrink-0 text-xs text-blue-600 hover:underline">サイトを見る ↗</a>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray-700">開業した歯科医院向けに、要望整理からデザイン・実装・公開までを一貫して担当したカスタムWebサイトです。ユーザーに伝わりやすい情報設計と、運用しやすい構成を意識して制作しました。</p>
+            </article>
+            <article class="rounded-md border border-gray-300 p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold">PairPocket</h3>
+                <a href="https://github.com/JangsuKim/PairPocket" target="_blank" rel="noopener" class="shrink-0 text-xs text-blue-600 hover:underline">GitHub ↗</a>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray-700">同居・結婚生活における家計管理を目的に開発中のiOSアプリケーションです。実際の生活課題を起点に、要件定義から設計・実装を進めています。</p>
+            </article>
           </div>
         </section>
 
