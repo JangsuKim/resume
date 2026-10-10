@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gray-100 py-10 px-4">
+  <div class="resume-page min-h-screen bg-gray-100 py-10 px-4">
     <!-- 스케일러 래퍼: 카드 전체(내용 포함)를 그룹으로 스케일 -->
     <div
-      class="mx-auto select-none"
+      class="resume-print-wrapper mx-auto select-none"
       :style="{ width: (BASE_WIDTH * effectiveScale) + 'px' }"
       @dblclick.prevent="toggleMode"
       @touchend.passive="onTouchEnd"
@@ -137,7 +137,7 @@ const profile = {
   mobile: '080-3733-6561',
   address: '大阪府東大阪市高井田元町2-12-5-1410',
   github: {
-    label: 'GitHub(https://github.com/JangsuKim)',
+    label: 'GitHub',
     url: 'https://github.com/JangsuKim',
   },
   qualifications: [
@@ -204,15 +204,37 @@ onBeforeUnmount(() => {
 
 <style>
   @media print {
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    html,
     body {
+      margin: 0;
+      background: white !important;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* A4에 맞춰 자동 축소 */
+    .resume-page {
+      min-height: 0 !important;
+      padding: 0 !important;
+      background: white !important;
+    }
+
+    /* Chrome의 84% 인쇄 배율과 같은 레이아웃 축소를 적용한다. */
+    .resume-print-wrapper {
+      width: 689px !important;
+      margin: 0 auto !important;
+    }
+
     .print-scale {
-      transform: scale(0.72);
-      transform-origin: top center;
+      transform: none !important;
+      zoom: 0.84;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
     }
   }
 </style>
