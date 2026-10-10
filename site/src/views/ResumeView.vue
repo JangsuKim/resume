@@ -32,34 +32,36 @@
             <!-- 좌: 이름 + 정보표 (텍스트) -->
             <div class="pl-12">
               <h2 class="text-[30px] leading-[1.05] font-semibold mb-3">
-                KIM JANGSU
-                <span class="text-[20px] text-gray-600 font-normal ml-2">(キム・ジャンス)</span>
+                {{ profile.name }}
+                <span class="text-[20px] text-gray-600 font-normal ml-2">({{ profile.nameJa }})</span>
               </h2>
 
               <table class="w-full text-[15px] leading-[1.35]">
                 <tbody>
                   <tr class="align-top">
                     <td class="w-[72px] text-gray-500 pb-2">age</td>
-                    <td class="pb-2">40歳 (1985-08-19)</td>
+                    <td class="pb-2">{{ age }}歳 ({{ birthDateLabel }})</td>
                   </tr>
                   <tr class="align-top">
                     <td class="w-[72px] text-gray-500 pb-2">e-mail</td>
                     <td class="pb-2">
-                      <a href="mailto:jangsoo719@gmail.com" class="hover:underline">jangsoo719@gmail.com</a>
+                      <a :href="`mailto:${profile.email}`" class="hover:underline">{{ profile.email }}</a>
                     </td>
                   </tr>
                   <tr class="align-top">
                     <td class="text-gray-500 pb-2">mobile</td>
-                    <td class="pb-2">080-3733-6561</td>
+                    <td class="pb-2">{{ profile.mobile }}</td>
                   </tr>
                   <tr class="align-top">
                     <td class="text-gray-500 pb-2">address</td>
-                    <td class="pb-2">大阪府大阪市東成区中本5-13-10</td>
+                    <td class="pb-2">{{ profile.address }}</td>
                   </tr>
                   <tr class="align-top">
                     <td class="text-gray-500">Web</td>
                     <td>
-                      <a href="https://github.com/JangsuKim" target="_blank" class="hover:underline">🧑‍💻 [GitHub]</a>
+                      <a :href="profile.github.url" target="_blank" rel="noopener" class="hover:underline">
+                        🧑‍💻 [{{ profile.github.label }}]
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -90,17 +92,13 @@
             </div>
             <div>
               <div class="space-y-2 text-[15px] leading-[1.5]">
-                <div style="display:grid; grid-template-columns: 1fr 450px;">
-                  <span>JLPT 2級</span>
-                  <span class="text-neutral-600 text-left">(2009年2月)</span>
-                </div>
-                <div style="display:grid; grid-template-columns: 1fr 450px;">
-                  <span>TOEIC 750点</span>
-                  <span class="text-neutral-600 text-left">(2023年2月)</span>
-                </div>
-                <div style="display:grid; grid-template-columns: 1fr 450px;">
-                  <span>情報処理産業棋士</span>
-                  <span class="text-neutral-600 text-left">(2016年11月)</span>
+                <div
+                  v-for="qualification in profile.qualifications"
+                  :key="qualification.name"
+                  style="display:grid; grid-template-columns: 1fr 450px;"
+                >
+                  <span>{{ qualification.name }}</span>
+                  <span class="text-neutral-600 text-left">({{ qualification.date }})</span>
                 </div>
               </div>
             </div>
@@ -131,6 +129,36 @@ import ResumeTimeline from '@/components/ResumeTimeline.vue'
 
 const BASE_WIDTH = 820      // 카드 설계 폭(px)
 const OUTER_PADDING = 32    // 페이지 좌우 padding(px-4 = 16*2)
+const profile = {
+  name: 'KIM JANGSU',
+  nameJa: 'キム・ジャンス',
+  birthDate: { year: 1985, month: 8, day: 19 },
+  email: 'jangsoo719@gmail.com',
+  mobile: '080-3733-6561',
+  address: '大阪府東大阪市高井田元町2-12-5-1410',
+  github: {
+    label: 'GitHub(https://github.com/JangsuKim)',
+    url: 'https://github.com/JangsuKim',
+  },
+  qualifications: [
+    { name: 'JLPT 2級', date: '2009年2月' },
+    { name: 'TOEIC 750点', date: '2023年2月' },
+    { name: '情報処理産業棋士', date: '2016年11月' },
+  ],
+}
+
+const birthDateLabel = `${profile.birthDate.year}-${String(profile.birthDate.month).padStart(2, '0')}-${String(profile.birthDate.day).padStart(2, '0')}`
+
+const age = computed(() => {
+  const today = new Date()
+  let value = today.getFullYear() - profile.birthDate.year
+  const hasHadBirthday =
+    today.getMonth() + 1 > profile.birthDate.month ||
+    (today.getMonth() + 1 === profile.birthDate.month && today.getDate() >= profile.birthDate.day)
+
+  if (!hasHadBirthday) value -= 1
+  return value
+})
 
 type Mode = 'fit' | 'actual'   // fit=화면폭 맞춤, actual=100%
 const mode = ref<Mode>('fit')
