@@ -36,8 +36,8 @@
           <span>最終更新：2026-10-10</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
-            <a href="#personal-projects" class="hover:underline">個人プロジェクト</a>
             <a href="#projects" class="hover:underline">プロジェクト</a>
+            <a href="#personal-projects" class="hover:underline">個人プロジェクト</a>
             <a href="#skills" class="hover:underline">スキル</a>
           </nav>
         </div>
@@ -78,7 +78,7 @@
                 </p>
 
                 <p>
-                  2026年からは業務でClaude Code、個人開発でChatGPT PlusのCodexを活用しています。
+                  <strong>2026年からは業務でClaude Code、個人開発でChatGPT PlusのCodexを活用しています。</strong>
                   要件整理、実装のたたき台作成、テスト観点の洗い出し、レビューにAIを取り入れ、
                   未経験の技術領域でも調査・検証を重ねながら、WebサイトやiOSアプリケーションの開発を進めています。
                 </p>
