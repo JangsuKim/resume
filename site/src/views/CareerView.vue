@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gray-100 py-10 px-4">
+  <div class="career-page min-h-screen bg-gray-100 py-10 px-4">
     <!-- 스케일러 래퍼 -->
     <div
-      class="mx-auto select-none"
+      class="career-print-wrapper mx-auto select-none"
       :style="{ width: (BASE_WIDTH * effectiveScale) + 'px' }"
       style="touch-action: pan-y; -ms-touch-action: pan-y;"
       @dblclick.prevent="toggleMode"
@@ -12,7 +12,7 @@
     >
       <!-- A4 카드 -->
       <div
-        class="relative bg-white border border-gray-300 shadow-sm rounded-md p-10 pt-16"
+        class="career-document relative bg-white border border-gray-300 shadow-sm rounded-md p-10 pt-16"
         style="width: 820px;"
         :style="{ transform: `scale(${effectiveScale})`, transformOrigin: 'top left' }"
       >
@@ -32,7 +32,7 @@
         </header>
 
         <!-- 메타(최종 업데이트, 링크 앵커) -->
-        <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
+        <div class="career-meta mt-3 flex items-center justify-between text-xs text-gray-500">
           <span>最終更新：2026-10-10</span>
           <nav class="space-x-4">
             <a href="#intro" class="hover:underline">自己紹介</a>
@@ -278,6 +278,15 @@ onBeforeUnmount(() => {
 <style scoped>
 .fade-enter-active, .fade-leave-active { transition: opacity .15s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
+
+@media screen and (max-width: 767px) {
+  .career-page { padding: 1rem !important; }
+  .career-print-wrapper { width: 100% !important; }
+  .career-document { width: 100% !important; transform: none !important; padding: 4.5rem 1.25rem 1.5rem !important; }
+  .career-meta { align-items: flex-start; flex-direction: column; gap: .5rem; }
+  .career-meta nav { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+  .career-meta nav a { margin: 0 !important; }
+}
 
 /* 🔹 인쇄 최적화 */
 @media print {

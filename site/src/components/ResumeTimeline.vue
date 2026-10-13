@@ -25,24 +25,23 @@ const items: Item[] = [
     </h2>
   </header>
 
-  <div class="relative px-5 py-3">
-    <!-- 세로 라인: 왼쪽 1/5 지점(20%)에 고정 -->
-    <div class="absolute left-[20%] top-0 h-full w-px bg-slate-200"></div>
-
-    <ul class="space-y-1.5">
+  <div class="timeline-container relative px-5 py-3">
+    <ul class="timeline-list relative space-y-1.5">
+      <!-- 연도·원과 같은 기준점에서 이어지는 세로선 -->
+      <div class="timeline-line absolute left-[20%] top-0 h-full w-px bg-slate-200"></div>
       <li v-for="(it, i) in items" :key="i" class="relative flex items-start">
         <!-- 왼쪽(20%): 연도 -->
-        <div class="w-[20%] pt-1.5 pr-3 text-center">
+        <div class="timeline-year w-[20%] pt-1.5 pr-3 text-center">
           <span class="text-2xl font-bold leading-none tracking-tight text-slate-400">
             {{ it.year }}
           </span>
         </div>
 
-        <div class="absolute left-[18.4%] top-1/3 -translate-x-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-slate-500 shadow-sm"></div>
+        <div class="timeline-dot absolute left-[20%] top-1/3 -translate-x-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-slate-500 shadow-sm"></div>
 
         <!-- 오른쪽(80%): 내용 -->
         <div
-          class="w-[70%] origin-left rounded-md bg-white px-3 py-1.5 transition
+          class="timeline-card w-[70%] origin-left rounded-md bg-white px-3 py-1.5 transition
                  duration-200 ease-out hover:scale-110 hover:shadow-md hover:ring-1 hover:ring-slate-200"
         >
           <h3 class="text-[18px] leading-tight font-semibold text-slate-900">{{ it.title }}</h3>
@@ -57,3 +56,22 @@ const items: Item[] = [
     </ul>
   </div>
 </template>
+
+<style scoped>
+@media screen and (min-width: 768px) {
+  .timeline-card { width: calc(70% - 1rem); margin-left: 1rem; }
+}
+
+@media screen and (max-width: 767px) {
+  .timeline-container { padding-left: .75rem !important; padding-right: .25rem !important; }
+  .timeline-list {
+    --year-column: 24%;
+    --track-position: calc(var(--year-column) + 6px);
+  }
+  .timeline-line { left: var(--track-position) !important; }
+  .timeline-year { width: var(--year-column) !important; flex: none; padding-top: 1.25rem !important; text-align: left; transform: translateX(-.5rem); }
+  .timeline-dot { left: var(--track-position) !important; top: 1.75rem; transform: translateX(-50%); }
+  .timeline-card { width: calc(100% - var(--year-column) - 22px) !important; margin-left: 22px; flex: none; }
+  .timeline-card:hover { transform: none; }
+}
+</style>
