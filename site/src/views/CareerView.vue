@@ -7,7 +7,7 @@
       style="touch-action: pan-y; -ms-touch-action: pan-y;"
       @dblclick.prevent="toggleMode"
       @touchstart="onTouchStart"
-      @touchmove.prevent="onTouchMove"
+      @touchmove="onTouchMove"
       @touchend.passive="onTouchEnd"
     >
       <!-- A4 카드 -->
