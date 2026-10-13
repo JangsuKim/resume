@@ -144,7 +144,7 @@ const profile = {
   qualifications: [
     { name: 'JLPT 2級', date: '2009年2月' },
     { name: 'TOEIC 750点', date: '2023年2月' },
-    { name: '情報処理産業棋士', date: '2016年11月' },
+    { name: '情報処理産業技士', date: '2016年11月' },
   ],
 }
 
