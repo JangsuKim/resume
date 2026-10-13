@@ -26,14 +26,14 @@
         <!-- 프로필 박스 (내용 그대로) -->
         <section>
           <div
-            class="w-full"
+            class="resume-profile w-full"
             style="display:grid; grid-template-columns: 1fr 200px; gap:4px;"
           >
             <!-- 좌: 이름 + 정보표 (텍스트) -->
-            <div class="pl-12">
+            <div class="resume-profile-details pl-12">
               <h2 class="text-[30px] leading-[1.05] font-semibold mb-3">
                 {{ profile.name }}
-                <span class="text-[20px] text-gray-600 font-normal ml-2">({{ profile.nameJa }})</span>
+                <span class="resume-name-ja text-[20px] text-gray-600 font-normal ml-2">({{ profile.nameJa }})</span>
               </h2>
 
               <table class="w-full text-[15px] leading-[1.35]">
@@ -69,7 +69,7 @@
             </div>
 
             <!-- 우: 사진 (조금 더 왼쪽으로 당김) -->
-            <div class="flex justify-start items-start pr-10 relative right-10">
+            <div class="resume-profile-photo flex justify-start items-start pr-10 relative right-10">
               <img
                 src="@/assets/profile.jpg"
                 alt="프로필"
@@ -85,8 +85,8 @@
         </section>
 
         <!-- 資格・認定 : 고정 2컬럼 그리드 -->
-        <section class="mt-8 border-t border-gray-200 pt-3 pl-8">
-          <div style="display:grid; grid-template-columns: 110px 1fr; column-gap:18px;">
+        <section class="resume-qualifications mt-8 border-t border-gray-200 pt-3 pl-8">
+          <div class="resume-qualifications-grid" style="display:grid; grid-template-columns: 110px 1fr; column-gap:18px;">
             <div class="flex items-start">
               <h3 class="font-semibold text-lg">免許・資格</h3>
             </div>
@@ -95,6 +95,7 @@
                 <div
                   v-for="qualification in profile.qualifications"
                   :key="qualification.name"
+                  class="resume-qualification-row"
                   style="display:grid; grid-template-columns: 1fr 450px;"
                 >
                   <span>{{ qualification.name }}</span>
@@ -106,12 +107,12 @@
         </section>
 
         <!-- 링크 -->
-        <section class="mt-8 border-t border-gray-200 pt-3 pl-7 relative z-10">
-          <div class="flex items-start gap-6">
-            <h3 class="font-semibold text-lg">職務経歴書</h3>
+        <section class="resume-career-link mt-8 border-t border-gray-200 pt-3 pl-7 relative z-10">
+          <div class="resume-career-link-content flex items-center justify-between gap-3">
+            <h3 class="shrink-0 whitespace-nowrap font-semibold text-lg">職務経歴書</h3>
             <RouterLink
               :to="{ name: 'CareerPage' }"
-              class="inline-flex items-center gap-2 text-blue-600 hover:text-gray-900 transition-colors pl-6"
+              class="resume-career-link-action inline-flex shrink-0 whitespace-nowrap items-center gap-2 text-blue-600 hover:text-gray-900 transition-colors"
             >
               職務経歴書へ移動 <span aria-hidden="true">→</span>
             </RouterLink>
@@ -143,7 +144,7 @@ const profile = {
   qualifications: [
     { name: 'JLPT 2級', date: '2009年2月' },
     { name: 'TOEIC 750点', date: '2023年2月' },
-    { name: '情報処理産業棋士', date: '2016年11月' },
+    { name: '情報処理産業技士', date: '2016年11月' },
   ],
 }
 
@@ -236,5 +237,26 @@ onBeforeUnmount(() => {
       border-radius: 0 !important;
       box-shadow: none !important;
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    .resume-page { padding: 1rem !important; }
+    .resume-print-wrapper { width: 100% !important; }
+    .print-scale { width: 100% !important; transform: none !important; }
+    .resume-profile { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+    .resume-profile-details { padding-left: 0 !important; }
+    .resume-name-ja { display: block; margin: .5rem 0 0 !important; }
+    .resume-profile-photo { position: static !important; right: auto !important; justify-content: center !important; padding-right: 0 !important; }
+    .resume-profile-photo img { margin: 0 !important; transform: none !important; }
+    .resume-qualifications { padding-left: 0 !important; }
+    .resume-career-link { padding-left: 0 !important; }
+    .resume-career-link-content { justify-content: space-between; }
+    .resume-qualifications-grid { grid-template-columns: 1fr !important; gap: .75rem !important; }
+    .resume-qualification-row { grid-template-columns: 1fr auto !important; gap: 1rem !important; }
+  }
+
+  @media screen and (min-width: 768px) {
+    .resume-career-link-content { justify-content: flex-start; gap: 1.5rem; }
+    .resume-career-link-action { margin-left: 3.5rem; }
   }
 </style>
