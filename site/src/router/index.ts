@@ -1,6 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ResumeView from '@/views/ResumeView.vue'
 
+function restoreGithubPagesRoute() {
+  const redirect = new URLSearchParams(window.location.search).get('redirect')
+
+  if (!redirect?.startsWith('/')) return
+
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+  window.history.replaceState(null, '', `${base}${redirect}`)
+}
+
+restoreGithubPagesRoute()
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
